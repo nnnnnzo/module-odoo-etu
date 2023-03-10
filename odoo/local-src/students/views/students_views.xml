@@ -16,6 +16,16 @@
                             <field name="lastname"/>
                         </group>
                     </group>
+                    <notebook>
+                        <page string="Marks" name="mark">
+                            <field name="mark_ids">
+                                <tree editable="bottom">
+                                    <field name="subject"/>
+                                    <field name="mark" />
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
                 </sheet>
             </form>
         </field>
@@ -46,6 +56,23 @@
             </form>
         </field>
     </record>
+    <record model="ir.ui.view" id="students_mark_view_form">
+        <field name="name">students.form</field>
+        <field name="model">students.mark</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Marks">
+                <sheet>
+                    <group>
+                        <field name="subject"/>
+                        <field name="mark" />
+                        <field name="student_ids"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
     <record model="ir.ui.view" id="students_student_view_tree">
         <field name="name">students.tree</field>
         <field name="model">students.student</field>
@@ -55,6 +82,7 @@
                 <field name="firstname"/>
                 <field name="lastname"/>
                 <field name="training_id"/>
+                <field name="mark_ids"/>
             </tree>
         </field>
     </record>
@@ -70,6 +98,19 @@
             </tree>
         </field>
     </record>
+    <record model="ir.ui.view" id="students_mark_view_tree">
+        <field name="name">trainings.tree</field>
+        <field name="model">students.mark</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Marks">
+                <field name="subject"/>
+                <field name="mark" />
+                <field name="student_ids"/>
+            </tree>
+        </field>
+    </record>
+
     <record model="ir.actions.act_window" id="action_students_student_view">
         <field name="name">Students</field>
         <field name="type">ir.actions.act_window</field>
@@ -82,8 +123,17 @@
         <field name="res_model">students.training</field>
         <field name="view_mode">tree,form</field>
     </record>
+    <record model="ir.actions.act_window" id="action_marks_student_view">
+        <field name="name">Marks</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">students.mark</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
     <menuitem id="students_menu" name="Students"/>
     <menuitem id="students_training_menu" name="Trainings" parent="students_menu"
               action="action_trainings_student_view"/>
     <menuitem id="students_student_menu" name="Students" parent="students_menu" action="action_students_student_view"/>
+    <menuitem id="students_mark_menu" name="Marks" parent="students_menu"
+              action="action_marks_student_view"/>
 </odoo>
