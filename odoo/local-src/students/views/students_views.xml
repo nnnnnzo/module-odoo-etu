@@ -10,11 +10,13 @@
                         <group>
                             <field name="number"/>
                             <field name="training_id"/>
+                            <field name="avgMark"/>
                         </group>
                         <group>
                             <field name="firstname"/>
                             <field name="lastname"/>
                         </group>
+
                     </group>
                     <notebook>
                         <page string="Marks" name="mark">
@@ -22,6 +24,8 @@
                                 <tree editable="bottom">
                                     <field name="subject"/>
                                     <field name="mark" />
+                                    <field name="coefficient"/>
+                                    <field name="coefMark"/>
                                 </tree>
                             </field>
                         </page>
@@ -66,6 +70,8 @@
                     <group>
                         <field name="subject"/>
                         <field name="mark" />
+                        <field name="coefficient"/>
+                        <field name="coefMark"/>
                         <field name="student_ids"/>
                     </group>
                 </sheet>
@@ -81,6 +87,7 @@
             <tree string="Students">
                 <field name="firstname"/>
                 <field name="lastname"/>
+                <field name="avgMark"/>
                 <field name="training_id"/>
                 <field name="mark_ids"/>
             </tree>
@@ -106,6 +113,8 @@
             <tree string="Marks">
                 <field name="subject"/>
                 <field name="mark" />
+                <field name="coefficient"/>
+                <field name="coefMark"/>
                 <field name="student_ids"/>
             </tree>
         </field>
